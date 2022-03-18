@@ -1,13 +1,16 @@
-import type { NextPage } from 'next';
-import { Header } from '@/components/common';
+import { MainLayout } from '@/components/layouts';
+import { NextPageWithLayout } from '@/models/common';
+import { Box, Typography } from '@mui/material';
 
-const Home: NextPage = () => {
+const Home: NextPageWithLayout = () => {
   return (
-    <div>
-      <Header />
-      <h1>Xin chào</h1>
-    </div>
+    <Box minHeight="100vh">
+      <Typography component="h1" variant="h3">
+        Home Page
+      </Typography>
+    </Box>
   );
 };
 
+Home.Layout = MainLayout;
 export default Home;

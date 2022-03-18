@@ -1,12 +1,29 @@
 import React from 'react';
-import { Box, Typography } from '@mui/material';
+import { Box, Container, Stack, Link as MuiLink } from '@mui/material';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ROUTE_LIST } from '@/app/routes';
+import clsx from 'clsx';
 
 export const Header = () => {
+  const router = useRouter();
+
   return (
-    <Box>
-      <Typography component="h3" variant="h1">
-        Header
-      </Typography>
+    <Box display={{ xs: 'none', md: 'block' }} py={2}>
+      <Container>
+        <Stack direction="row" justifyContent="flex-end">
+          {ROUTE_LIST.map((route) => (
+            <Link key={route.path} href={route.path} passHref>
+              <MuiLink
+                sx={{ ml: 4, fontWeight: 'medium' }}
+                className={clsx({ active: router.pathname === route.path })}
+              >
+                {route.label}
+              </MuiLink>
+            </Link>
+          ))}
+        </Stack>
+      </Container>
     </Box>
   );
 };
