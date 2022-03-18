@@ -38,6 +38,7 @@ export default function HeaderMobile() {
           >
             <Link key={route.path} href={route.path} passHref>
               <MuiLink
+                onClick={() => setOpen(false)}
                 sx={{ ml: 4, fontWeight: 'medium' }}
                 className={clsx({ active: router.pathname === route.path })}
               >
@@ -50,7 +51,7 @@ export default function HeaderMobile() {
     </Box>
   );
   return (
-    <Box sx={{ flexGrow: 1 }} display={{ xs: 'block', md: 'none' }}>
+    <Box display={{ xs: 'block', md: 'none' }}>
       <Toolbar variant="dense">
         <IconButton
           edge="start"
