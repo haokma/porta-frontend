@@ -15,3 +15,8 @@ export type AppPropsWithLayout = AppProps & {
   Component: NextPageWithLayout;
   emotionCache?: EmotionCache;
 };
+
+export interface ItemRouter {
+  label: string;
+  path: string;
+}

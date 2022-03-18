@@ -1,29 +1,14 @@
-import React from 'react';
-import { Box, Container, Stack, Link as MuiLink } from '@mui/material';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { ROUTE_LIST } from '@/app/routes';
-import clsx from 'clsx';
+import { HeaderDesktop } from './header-desktop';
+import HeaderMobile from './header-mobile';
 
 export const Header = () => {
   const router = useRouter();
 
   return (
-    <Box display={{ xs: 'none', md: 'block' }} py={2}>
-      <Container>
-        <Stack direction="row" justifyContent="flex-end">
-          {ROUTE_LIST.map((route) => (
-            <Link key={route.path} href={route.path} passHref>
-              <MuiLink
-                sx={{ ml: 4, fontWeight: 'medium' }}
-                className={clsx({ active: router.pathname === route.path })}
-              >
-                {route.label}
-              </MuiLink>
-            </Link>
-          ))}
-        </Stack>
-      </Container>
-    </Box>
+    <>
+      <HeaderDesktop />
+      <HeaderMobile />
+    </>
   );
 };
