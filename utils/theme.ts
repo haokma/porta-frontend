@@ -49,7 +49,7 @@ export let theme = createTheme({
           maxWidth: '1260px',
 
           '@media (min-width: 1440px)': {
-            maxWidth: '1160px',
+            maxWidth: '1200px',
           },
         },
       },
