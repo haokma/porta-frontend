@@ -127,7 +127,7 @@ const data = [
 
 export const RecentInterview = () => {
   return (
-    <Box pt={4} pb={4}>
+    <Box pt={4} pb={4} bgcolor="secondary.light">
       <Container>
         <Stack direction="row" justifyContent={{ xs: 'center', md: 'space-between' }} mb={2}>
           <Typography variant="h6">Recent Interview</Typography>

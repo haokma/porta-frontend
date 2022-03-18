@@ -4,7 +4,7 @@ import avatar from '@/images/hero.jpg';
 
 export const HeroSection = () => {
   return (
-    <Box component="section" pt={18} pb={9}>
+    <Box component="section" pt={{ xs: 10, md: 18 }} pb={{ xs: 8, md: 16 }}>
       <Container>
         <Stack
           direction={{ xs: 'column-reverse', md: 'row' }}
