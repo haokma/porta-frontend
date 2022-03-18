@@ -21,7 +21,7 @@ export let theme = createTheme({
   components: {
     MuiContainer: {
       defaultProps: {
-        maxWidth: 'md',
+        maxWidth: 'xl',
       },
       styleOverrides: {
         maxWidthSm: {
@@ -36,6 +36,20 @@ export let theme = createTheme({
 
           '@media (min-width: 900px)': {
             maxWidth: '860px',
+          },
+        },
+        maxWidthLg: {
+          maxWidth: '900px',
+
+          '@media (min-width: 1024px)': {
+            maxWidth: '900px',
+          },
+        },
+        maxWidthXl: {
+          maxWidth: '1260px',
+
+          '@media (min-width: 1440px)': {
+            maxWidth: '1160px',
           },
         },
       },
