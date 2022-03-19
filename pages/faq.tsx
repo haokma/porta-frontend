@@ -1,7 +1,9 @@
-import { Box, Container, List, Stack, Link as MuiLink, Typography } from '@mui/material';
-import { FaqCard } from '../common/faq-card';
-import Link from 'next/link';
-
+import { NextPageWithLayout } from '@/models/common';
+import { Box, Container, Stack } from '@mui/material';
+import { MainLayout } from '@/components/layouts';
+import { Banner } from '@/components/common';
+import { BlogCategory } from '@/components/Blog';
+import { FaqCard, PostCard } from '@/components/Home';
 const data = [
   {
     _id: '612b10d874142e4db22c5b15',
@@ -124,35 +126,34 @@ const data = [
     __v: 0,
   },
 ];
-
-export const RecentInterview = () => {
+const Faq: NextPageWithLayout = () => {
   return (
-    <Box pt={4} pb={4} bgcolor="secondary.light">
-      <Container>
-        <Stack direction="row" justifyContent={{ xs: 'center', md: 'space-between' }} mb={2}>
-          <Typography variant="h6">Recent Interview</Typography>
-          <Link href="/faq" passHref>
-            <MuiLink display={{ xs: 'none', md: 'inline' }} color="secondary.light">
-              View all
-            </MuiLink>
-          </Link>
-        </Stack>
-        <List sx={{ width: '100%' }} component="nav" aria-labelledby="nested-list-subheader">
-          <Stack
-            sx={{
-              '& > div': {
-                width: '100%',
-              },
-            }}
-          >
+    <Box>
+      <Banner />
+      <Container
+        sx={{
+          marginTop: 5,
+        }}
+      >
+        <Stack
+          direction={{ md: 'column-reverse', xs: 'column-reverse', lg: 'row' }}
+          justifyContent={{ xs: 'center', md: 'space-between' }}
+          mb={2}
+          spacing={4}
+        >
+          <Box mb={2} flexGrow={1} width="100%">
             {data.map((faq, index) => (
-              <Box key={index}>
-                <FaqCard faq={faq} />
-              </Box>
+              <FaqCard faq={faq} key={index} />
             ))}
-          </Stack>
-        </List>
+          </Box>
+          <Box minWidth="300px">
+            <BlogCategory />
+          </Box>
+        </Stack>
       </Container>
     </Box>
   );
 };
+
+Faq.Layout = MainLayout;
+export default Faq;
