@@ -146,8 +146,8 @@ export const RecentFaq = () => {
             }}
           >
             {data.map((faq, index) => (
-              <Box>
-                <FaqCard faq={faq} key={index} />
+              <Box key={index}>
+                <FaqCard faq={faq} />
               </Box>
             ))}
           </Stack>

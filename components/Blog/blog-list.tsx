@@ -5,8 +5,8 @@ export const BlogList = () => {
   return (
     <Box>
       <Stack spacing={2}>
-        {[1, 2, 3, 4, 5].map(() => (
-          <Box>
+        {[1, 2, 3, 4, 5].map((number, index) => (
+          <Box key={index}>
             <BlogItem />
           </Box>
         ))}
