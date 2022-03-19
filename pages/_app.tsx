@@ -1,14 +1,13 @@
-import * as React from 'react';
-import Head from 'next/head';
-import { AppProps } from 'next/app';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { CacheProvider, EmotionCache } from '@emotion/react';
-import { theme, createEmotionCache } from '../utils';
-import { AppPropsWithLayout } from '@/models/common';
 import { EmptyLayout } from '@/components/layouts';
-
+import { AppPropsWithLayout } from '@/models/common';
+import { CacheProvider } from '@emotion/react';
+import CssBaseline from '@mui/material/CssBaseline';
+import { ThemeProvider } from '@mui/material/styles';
+import Head from 'next/head';
+import { SWRConfig } from 'swr';
+import { createEmotionCache, theme } from '../utils';
 const clientSideEmotionCache = createEmotionCache();
+import { axiosClient } from '../api-client';
 
 export default function MyApp(props: AppPropsWithLayout) {
   const { Component, pageProps } = props;
@@ -21,9 +20,20 @@ export default function MyApp(props: AppPropsWithLayout) {
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
+        <SWRConfig
+          value={{
+            fetcher: (url) => axiosClient.get(url),
+            revalidateOnFocus: false,
+            revalidateOnReconnect: false,
+            refreshWhenOffline: false,
+            refreshWhenHidden: false,
+            refreshInterval: 0,
+          }}
+        >
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </SWRConfig>
       </ThemeProvider>
     </CacheProvider>
   );
