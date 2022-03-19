@@ -1,5 +1,5 @@
 import { Box, Container, List, Stack, Link as MuiLink, Typography } from '@mui/material';
-import { FaqCard } from './faq-card';
+import { FaqCard } from '../common/faq-card';
 import Link from 'next/link';
 
 const data = [
