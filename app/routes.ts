@@ -9,7 +9,7 @@ export const ROUTE_LIST = [
   },
   {
     label: 'Interviews',
-    path: '/interview',
+    path: '/interviews',
   },
   {
     label: 'Blog',

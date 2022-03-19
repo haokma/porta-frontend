@@ -131,7 +131,7 @@ export const RecentInterview = () => {
       <Container>
         <Stack direction="row" justifyContent={{ xs: 'center', md: 'space-between' }} mb={2}>
           <Typography variant="h6">Recent Interview</Typography>
-          <Link href="/faq" passHref>
+          <Link href="/interviews" passHref>
             <MuiLink display={{ xs: 'none', md: 'inline' }} color="secondary.light">
               View all
             </MuiLink>

@@ -126,10 +126,10 @@ const data = [
     __v: 0,
   },
 ];
-const Faq: NextPageWithLayout = () => {
+const Interviews: NextPageWithLayout = () => {
   return (
     <Box>
-      <Banner title="WEB FAQ" description="Hỏi hay đáp chất - Code xịn mỗi ngày" />
+      <Banner title="WEB INTERVIEWS" description="Hỏi hay đáp chất - Code xịn mỗi ngày" />
       <Container
         sx={{
           marginTop: 5,
@@ -155,5 +155,5 @@ const Faq: NextPageWithLayout = () => {
   );
 };
 
-Faq.Layout = MainLayout;
-export default Faq;
+Interviews.Layout = MainLayout;
+export default Interviews;
