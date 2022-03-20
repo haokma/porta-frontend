@@ -1,13 +1,14 @@
 import { Box, Stack } from '@mui/material';
 import { BlogItem } from './blog-item';
 
-export const BlogList = () => {
+export const BlogList = (props: any) => {
+  const { blogList } = props;
   return (
     <Box>
       <Stack spacing={2}>
-        {[1, 2, 3, 4, 5].map((number, index) => (
+        {blogList?.map((blog: any, index: number) => (
           <Box key={index}>
-            <BlogItem />
+            <BlogItem blog={blog} />
           </Box>
         ))}
       </Stack>

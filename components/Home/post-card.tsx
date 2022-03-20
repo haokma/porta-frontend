@@ -1,6 +1,10 @@
-import { Box, Card, Typography, CardContent, Stack } from '@mui/material';
+import { Box, Card, Typography, CardContent, Stack, Link as MuiLink } from '@mui/material';
+import Image from 'next/image';
+import Link from 'next/link';
+import dayjs from 'dayjs';
 
-export const PostCard = () => {
+export const PostCard = (props: any) => {
+  const { blog } = props;
   return (
     <Card
       sx={{
@@ -8,17 +12,38 @@ export const PostCard = () => {
       }}
     >
       <CardContent>
-        <Typography component="h2" variant="h5" pb={2}>
-          Making a design system from scratch
-        </Typography>
-        <Stack direction="row" spacing={2} pb={2}>
-          <Typography>12 Feb 2020</Typography>
-          <Box component="span">|</Box>
-          <Typography>Design, Pattern</Typography>
+        <Stack mb={2} direction="row" alignItems="center">
+          <Box
+            borderRadius="50%"
+            overflow="hidden"
+            display="inline"
+            width="30px"
+            height="30px"
+            mr={2}
+          >
+            <Image
+              src={blog.user.avatar_url}
+              alt="avatar"
+              width="30"
+              height="30"
+              objectFit="cover"
+            />
+          </Box>
+          <Box>
+            <Typography fontWeight={500}>{blog.user.username}</Typography>
+          </Box>
         </Stack>
-        <Typography>
-          Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit officia
-          consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.
+        <Link href={`/blog/${blog.slug}`} passHref>
+          <MuiLink sx={{ fontSize: '28px', cursor: 'pointer' }}>{blog.title}</MuiLink>
+        </Link>
+
+        <Stack direction="row" spacing={2} pb={2} mt={2}>
+          <Typography>{dayjs(new Date(), 'vn').format('YYYY MMMM DD')}</Typography>
+          <Box component="span">|</Box>
+          <Typography>{blog.min_read} phút đọc </Typography>
+        </Stack>
+        <Typography overflow="hidden" whiteSpace="pre-line" textOverflow="ellipsis" height={100}>
+          {blog.meta_description}
         </Typography>
       </CardContent>
     </Card>

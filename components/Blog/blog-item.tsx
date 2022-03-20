@@ -1,8 +1,9 @@
-import { Box, Card, Typography, CardContent, Stack } from '@mui/material';
-import Image from 'next/image';
-import blogImage from '@/images/blog.jpg';
+import { Box, Card, CardContent, Link as MuiLink, Stack, Typography } from '@mui/material';
+import Link from 'next/link';
+import dayjs from 'dayjs';
 
-export const BlogItem = () => {
+export const BlogItem = (props: any) => {
+  const { blog } = props;
   return (
     <Card
       sx={{
@@ -12,26 +13,23 @@ export const BlogItem = () => {
       <CardContent>
         <Stack direction={{ md: 'row', xs: 'column-reverse' }} spacing={2}>
           <Box>
-            <Typography component="h2" variant="h5" pb={2}>
-              Making a design system from scratch
-            </Typography>
-            <Stack direction="row" spacing={2} pb={2}>
-              <Typography>12 Feb 2020</Typography>
+            <Link href={`/blog/${blog.slug}`} passHref>
+              <MuiLink sx={{ fontSize: '28px', cursor: 'pointer' }}>{blog.title}</MuiLink>
+            </Link>
+            <Stack direction="row" spacing={2} pb={2} mt={2}>
+              <Typography>{dayjs(new Date(), 'vn').format('YYYY MMMM DD')}</Typography>
               <Box component="span">|</Box>
-              <Typography>Design, Pattern</Typography>
+              <Typography>{blog.min_read} phút đọc</Typography>
             </Stack>
-            <Typography>
-              Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. Velit
-              officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud
-              amet.
-            </Typography>
+            <Typography>{blog.meta_description}</Typography>
           </Box>
           <Box
             minWidth={{ lg: '250px', md: '230px', sm: '200px', xs: '100%' }}
             marginBottom={{ md: 0, sm: 4, xs: 4 }}
             className="border-radious-2"
           >
-            <Image src={blogImage} layout="responsive" alt="blog-image" />
+            <img src={blog.thumbnail_url} alt="" style={{ objectFit: 'cover', width: '100%' }} />
+            {/* <Image src={blog.thumbnail_url} width="100%" alt="blog-image" /> */}
           </Box>
         </Stack>
       </CardContent>
