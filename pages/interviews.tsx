@@ -4,6 +4,7 @@ import { FaqCard } from '@/components/Home';
 import { MainLayout } from '@/components/layouts';
 import { NextPageWithLayout } from '@/models/common';
 import { Box, Container, Stack } from '@mui/material';
+import { useCategory } from '../hooks';
 const data = [
   {
     _id: '612b10d874142e4db22c5b15',
@@ -127,6 +128,7 @@ const data = [
   },
 ];
 const Interviews: NextPageWithLayout = () => {
+  const { categoryList } = useCategory('/interviews');
   return (
     <Box>
       <Banner title="WEB INTERVIEWS" description="Hỏi hay đáp chất - Code xịn mỗi ngày" />
@@ -147,7 +149,7 @@ const Interviews: NextPageWithLayout = () => {
             ))}
           </Box>
           <Box minWidth="300px">
-            <BlogCategory />
+            <BlogCategory categories={categoryList} />
           </Box>
         </Stack>
       </Container>

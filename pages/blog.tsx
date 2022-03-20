@@ -2,8 +2,10 @@ import { BlogCategory, BlogList } from '@/components/Blog';
 import { MainLayout } from '@/components/layouts';
 import { NextPageWithLayout } from '@/models/common';
 import { Box, Container, Stack, Typography } from '@mui/material';
+import { useCategory } from '../hooks';
 
 const Blog: NextPageWithLayout = () => {
+  const { categoryList } = useCategory();
   return (
     <Box mt={2}>
       <Container>
@@ -28,7 +30,7 @@ const Blog: NextPageWithLayout = () => {
               },
             }}
           >
-            <BlogCategory />
+            <BlogCategory categories={categoryList} />
           </Box>
         </Stack>
       </Container>

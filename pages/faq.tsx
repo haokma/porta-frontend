@@ -4,7 +4,11 @@ import { FaqCard } from '@/components/Home';
 import { MainLayout } from '@/components/layouts';
 import { NextPageWithLayout } from '@/models/common';
 import { Box, Container, Stack } from '@mui/material';
-const data = [
+import { useRouter } from 'next/router';
+import useSWR from 'swr';
+import axios from 'axios';
+import { useCategory } from '../hooks';
+const dataRes = [
   {
     _id: '612b10d874142e4db22c5b15',
     clapsCount: 0,
@@ -127,6 +131,8 @@ const data = [
   },
 ];
 const Faq: NextPageWithLayout = () => {
+  const { categoryList } = useCategory();
+
   return (
     <Box>
       <Banner title="WEB FAQ" description="Hỏi hay đáp chất - Code xịn mỗi ngày" />
@@ -142,12 +148,12 @@ const Faq: NextPageWithLayout = () => {
           spacing={4}
         >
           <Box mb={2} flexGrow={1} width="100%">
-            {data.map((faq, index) => (
+            {dataRes.map((faq, index) => (
               <FaqCard faq={faq} key={index} />
             ))}
           </Box>
           <Box minWidth="300px">
-            <BlogCategory />
+            <BlogCategory categories={categoryList} />
           </Box>
         </Stack>
       </Container>
@@ -156,4 +162,5 @@ const Faq: NextPageWithLayout = () => {
 };
 
 Faq.Layout = MainLayout;
+
 export default Faq;
