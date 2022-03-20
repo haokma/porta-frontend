@@ -25,7 +25,7 @@ export async function getStaticProps(context: any) {
   console.log(data.data);
   return {
     props: {
-      blogList: data.data.blogList,
+      blogList: data.data.blogList.slice(1),
     },
     revalidate: 20,
   };
