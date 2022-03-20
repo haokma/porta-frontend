@@ -2,7 +2,8 @@ import { Box, Container, Link as MuiLink, Stack, Typography } from '@mui/materia
 import Link from 'next/link';
 import { PostCard } from './post-card';
 
-export const RecentPost = () => {
+export const RecentPost = (props: any) => {
+  const { blogList } = props;
   return (
     <Box component="section" bgcolor="secondary.light" pt={6} pb={6}>
       <Container>
@@ -26,12 +27,11 @@ export const RecentPost = () => {
             },
           }}
         >
-          <Box>
-            <PostCard />
-          </Box>
-          <Box>
-            <PostCard />
-          </Box>
+          {blogList?.map((blog: any, index: number) => (
+            <Box key={index}>
+              <PostCard blog={blog} />
+            </Box>
+          ))}
         </Stack>
       </Container>
     </Box>

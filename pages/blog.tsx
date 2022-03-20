@@ -3,9 +3,13 @@ import { MainLayout } from '@/components/layouts';
 import { NextPageWithLayout } from '@/models/common';
 import { Box, Container, Stack, Typography } from '@mui/material';
 import { useCategory } from '../hooks';
+import axios from 'axios';
 
-const Blog: NextPageWithLayout = () => {
+const Blog: NextPageWithLayout = (props: any) => {
+  const { blogList } = props;
+
   const { categoryList } = useCategory();
+
   return (
     <Box mt={2}>
       <Container>
@@ -20,7 +24,7 @@ const Blog: NextPageWithLayout = () => {
           spacing={5}
         >
           <Box flexGrow={1}>
-            <BlogList />
+            <BlogList blogList={blogList} />
           </Box>
           <Box
             sx={{
@@ -39,5 +43,15 @@ const Blog: NextPageWithLayout = () => {
 };
 
 Blog.Layout = MainLayout;
-
+export async function getStaticProps(context: any) {
+  const url = 'http://localhost:5000/api/blog';
+  const data = await axios.get(url);
+  console.log(data.data);
+  return {
+    props: {
+      blogList: data.data.blogList,
+    },
+    revalidate: 20,
+  };
+}
 export default Blog;
