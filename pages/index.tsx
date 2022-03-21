@@ -20,12 +20,12 @@ const Home: NextPageWithLayout = (props: any) => {
 Home.Layout = MainLayout;
 
 export async function getStaticProps(context: any) {
-  const url = 'http://localhost:5000/api/blog';
+  const url = 'http://localhost:5000/api/blog?limit=2&page=1';
   const data = await axios.get(url);
   console.log(data.data);
   return {
     props: {
-      blogList: data.data.blogList.slice(1),
+      blogList: data.data.blogList,
     },
     revalidate: 20,
   };

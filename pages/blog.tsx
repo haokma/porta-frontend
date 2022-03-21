@@ -2,12 +2,16 @@ import { BlogCategory, BlogList } from '@/components/Blog';
 import { MainLayout } from '@/components/layouts';
 import { NextPageWithLayout } from '@/models/common';
 import { Box, Container, Stack, Typography } from '@mui/material';
-import { useCategory } from '../hooks';
+import { useCategory, useIntersection } from '../hooks';
 import axios from 'axios';
+import { useRef } from 'react';
 
 const Blog: NextPageWithLayout = (props: any) => {
+  const scrolRef = useRef(null);
   const { blogList } = props;
 
+  const inView = useIntersection(scrolRef, '200px');
+  console.log(inView);
   const { categoryList } = useCategory();
 
   return (
@@ -37,6 +41,7 @@ const Blog: NextPageWithLayout = (props: any) => {
             <BlogCategory categories={categoryList} />
           </Box>
         </Stack>
+        <div ref={scrolRef}></div>
       </Container>
     </Box>
   );

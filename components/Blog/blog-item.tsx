@@ -1,7 +1,7 @@
 import { formatDate } from '@/utils/format-time';
 import { Box, Card, CardContent, Link as MuiLink, Stack, Typography } from '@mui/material';
 import Link from 'next/link';
-import { ShareSocial } from '../common';
+import { ShareSocial } from '../common/share-social';
 import Image from 'next/image';
 export const BlogItem = (props: any) => {
   const { blog } = props;
@@ -54,11 +54,13 @@ export const BlogItem = (props: any) => {
             marginBottom={{ md: 0, sm: 4, xs: 4 }}
             className="border-radious-2"
           >
-            <img
-              src={blog.thumbnail_url}
-              alt=""
-              style={{ objectFit: 'cover', width: '100%', borderRadius: '10px' }}
-            />
+            {blog.thumbnail_url && (
+              <img
+                src={blog.thumbnail_url}
+                alt=""
+                style={{ objectFit: 'cover', width: '100%', borderRadius: '10px' }}
+              />
+            )}
             {/* <Image src={blog.thumbnail_url} width="100%" alt="blog-image" /> */}
           </Box>
         </Stack>
