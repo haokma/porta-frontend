@@ -2,7 +2,7 @@ import { Box, Card, CardContent, Link as MuiLink, Stack, Typography } from '@mui
 import dayjs from 'dayjs';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ShareSocial } from '../common';
+import { ShareSocial } from '../common/share-social';
 
 export const PostCard = (props: any) => {
   const { blog } = props;
