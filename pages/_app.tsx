@@ -8,6 +8,7 @@ import { SWRConfig } from 'swr';
 import { createEmotionCache, theme } from '../utils';
 const clientSideEmotionCache = createEmotionCache();
 import { axiosClient } from '../api-client';
+import '../styles/index.scss';
 
 export default function MyApp(props: AppPropsWithLayout) {
   const { Component, pageProps } = props;

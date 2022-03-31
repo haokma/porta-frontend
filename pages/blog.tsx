@@ -1,4 +1,4 @@
-import { BlogCategory, BlogList } from '@/components/Blog';
+import { BlogCategory, BlogList } from '@/components/blog';
 import { MainLayout } from '@/components/layouts';
 import { NextPageWithLayout } from '@/models/common';
 import { Box, Container, Stack, Typography } from '@mui/material';
